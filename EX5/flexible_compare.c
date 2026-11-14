@@ -36,6 +36,6 @@ int max(int a, int b, int (*cmp)(int, int)) // Uses the 'cmp' function pointer t
     // Call the passed comparison function
     if (cmp(a, b) > 0)
         return a;
-    else if (cmp(a, b) <= 0) 
+    else
         return b;
 }
