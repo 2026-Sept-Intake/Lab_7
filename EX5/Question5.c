@@ -1,0 +1,46 @@
+#include <stdio.h>
+#include <stdlib.h>
+
+int compare(int a,int b);
+int compare_absolute(int a, int b);
+int max(int a, int b, int(*compare)(int, int));
+
+int main (void)
+{
+	int a = 8;
+	int b=-10;
+
+	printf("Simple Comparison: max = %d\n", max(a,b,compare));
+	printf("Absolute Comparison: max = %d\n", max(a, b, compare_absolute));	
+
+	return 0;
+}
+
+int compare(int a,int b)
+{
+	if (a > b) return 1;
+	if (b > a) return -1;
+	return 0;
+
+}
+
+int compare_absolute(int a,int b)
+{
+
+	if (abs(a) > abs(b)) return 1;
+	if (abs(b) > abs(b)) return -1;
+	return 0;
+}
+
+int max(int a, int b, int(*compare)(int, int))
+{
+	if (compare(a, b) == 1)
+	{
+		return a;
+	}
+	else
+	{
+		return b;
+	}
+}
+
