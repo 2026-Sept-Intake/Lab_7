@@ -1,9 +1,19 @@
 #include <stdio.h>
 #include <stdlib.h>
 
+int max(int a, int b, int(*compare_max)(int, int));
+int compare_absolute(int a, int b);
+int compare(int a, int b);
+
 int main(void)
 {
-		
+	int a, b;
+	printf("Enter values for a and b: ");
+	scanf("%d %d", &a, &b);
+	
+	printf("Simple comparison: max = %d", max( a, b, compare));
+	printf("\nAbsolute Comparison: max = %d\n", max( a, b, compare_absolute));
+	return 0;
 }
 
 int compare(int a, int b)
@@ -26,4 +36,13 @@ int compare_absolute(int a, int b)
 		return 0;
 }
 
-void max(int a, int b, int(*compare)(int, int))
+int max(int a, int b, int(*compare_max)(int, int))
+{
+	int result = compare_max( a, b );
+	if( result == 1 )
+		return a;
+	if( result == -1 )
+		return b;
+	else
+		return 0;
+}
